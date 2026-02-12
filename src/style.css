@@ -1,0 +1,213 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Fraunces:wght@600;700&display=swap');
+
+:root {
+  color-scheme: light;
+  font-family: "DM Sans", "Trebuchet MS", sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+  color: #1f1b16;
+  background-color: #f7f1e8;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  min-height: 100vh;
+  background: radial-gradient(circle at top, #fef1d7 0%, #f4e6d4 42%, #efe3d5 100%);
+}
+
+#root {
+  min-height: 100vh;
+}
+
+.page {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 64px 24px 80px;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.page__header {
+  background: linear-gradient(135deg, rgba(255, 245, 224, 0.9), rgba(255, 231, 197, 0.8));
+  border-radius: 28px;
+  padding: 36px 32px;
+  box-shadow: 0 22px 50px rgba(75, 53, 39, 0.12);
+  border: 1px solid rgba(198, 141, 92, 0.2);
+}
+
+.eyebrow {
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: #b96c3a;
+  margin-bottom: 10px;
+}
+
+.page__header h1 {
+  font-family: "Fraunces", "Times New Roman", serif;
+  font-size: clamp(2.2rem, 4vw, 3.4rem);
+  margin-bottom: 12px;
+}
+
+.subtitle {
+  max-width: 560px;
+  font-size: 1.05rem;
+  color: #5c4637;
+}
+
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 24px;
+}
+
+.card {
+  background: #fffaf2;
+  border-radius: 24px;
+  padding: 24px 22px 26px;
+  border: 1px solid color-mix(in srgb, var(--accent) 28%, rgba(180, 122, 75, 0.18));
+  box-shadow: 0 18px 40px color-mix(in srgb, var(--accent) 18%, rgba(86, 56, 34, 0.12));
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  position: relative;
+  overflow: hidden;
+  --accent: #c87a44;
+}
+
+.card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    140deg,
+    color-mix(in srgb, var(--accent) 35%, rgba(255, 207, 155, 0.35)),
+    rgba(255, 245, 224, 0)
+  );
+  opacity: 0;
+  transition: opacity 200ms ease;
+}
+
+.card:hover::after {
+  opacity: 1;
+}
+
+.card__badge {
+  align-self: flex-start;
+  background: color-mix(in srgb, var(--accent) 25%, #f7d9b5);
+  color: color-mix(in srgb, var(--accent) 65%, #7a3e0c);
+  font-weight: 700;
+  padding: 6px 12px;
+  border-radius: 999px;
+  font-size: 0.78rem;
+  letter-spacing: 0.02em;
+  position: relative;
+  z-index: 1;
+}
+
+.card h2 {
+  font-family: "Fraunces", "Times New Roman", serif;
+  font-size: 1.4rem;
+  position: relative;
+  z-index: 1;
+}
+
+.card__description {
+  color: #4f3a2c;
+  font-size: 0.98rem;
+  position: relative;
+  z-index: 1;
+}
+
+.card__quote {
+  font-style: italic;
+  color: color-mix(in srgb, var(--accent) 70%, #7a4e2e);
+  padding: 10px 12px;
+  border-left: 3px solid color-mix(in srgb, var(--accent) 60%, #d3a173);
+  background: color-mix(in srgb, var(--accent) 12%, rgba(255, 233, 201, 0.6));
+  border-radius: 12px;
+  position: relative;
+  z-index: 1;
+  animation: floatIn 240ms ease-out;
+}
+
+.card__footer {
+  margin-top: auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  position: relative;
+  z-index: 1;
+}
+
+.card__actions {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+}
+
+.status {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #9b6a4d;
+}
+
+.status--on {
+  color: color-mix(in srgb, var(--accent) 70%, #1f7a4d);
+}
+
+.btn {
+  border: none;
+  border-radius: 999px;
+  padding: 10px 18px;
+  font-weight: 700;
+  font-size: 0.9rem;
+  cursor: pointer;
+  background: #1f1b16;
+  color: #fff6e9;
+  transition: transform 160ms ease, box-shadow 160ms ease, background 160ms ease;
+}
+
+.btn--ghost {
+  background: color-mix(in srgb, var(--accent) 18%, rgba(255, 213, 170, 0.8));
+  color: color-mix(in srgb, var(--accent) 70%, #6a3a14);
+}
+
+.btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 10px 20px rgba(35, 20, 10, 0.2);
+}
+
+.btn--active {
+  background: color-mix(in srgb, var(--accent) 60%, #1f7a4d);
+}
+
+@keyframes floatIn {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 640px) {
+  .page {
+    padding: 40px 18px 64px;
+  }
+
+  .page__header {
+    padding: 28px 24px;
+  }
+}
